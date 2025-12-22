@@ -19,18 +19,15 @@ export default async function Home() {
 
   return (
     <div className="min-h-dvh flex flex-col">
-      <Header
-        nav="| VAULT | GALLERY |"
-        rightButton={{ label: "Veterans", href: "/veterans", ariaLabel: "Open Veterans" }}
-      />
+      <Header nav={[{ label: "VAULT", hoverEffect: false }, { label: "GALLERY", hoverEffect: false, href : "/veterans" }]}/>
       <main className="flex-1 max-w-full w-full items-center justify-between py-5 px-5 align-middle lg:items-center sm:items-center xs:items-center overflow-auto">
         <video
-          src={'/pages/home/home.mp4'}
+          src={'/pages/home/home_video.mp4'}
           autoPlay
           loop
           muted
           playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'unset' }}
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       </main>
       <Footer />

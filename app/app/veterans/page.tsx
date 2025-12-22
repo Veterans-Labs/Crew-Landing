@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { PanelConfig } from '../interfaces/interfaces';
-import { GridPanel, GridPanelVeterans } from '../components/GridPanel';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { JSX } from 'react/jsx-runtime';
+
 import '../globals.css';
 
 /**
@@ -18,14 +19,37 @@ import '../globals.css';
  */
 
 export default function Veterans() {
-  const [panels, setPanels] = useState<PanelConfig[]>([]);
+  const [content, setContent] = useState<JSX.Element>(<></>);
   const [loading, setLoading] = useState(true);
+  const path = '/pages/veterans';
 
   useEffect(() => {
-    async function loadPanels() {
+    async function GetVeterans() {
       try {
-        const data = await GridPanelVeterans();
-        setPanels(data);
+        return (
+          <div className="page-panel">
+            <div className="page-panel-title text-center">
+              THIS IS
+              <img src={`${path}/veterans_title.png`} alt='Veterans' width={350} height={71} className='mx-auto mt-2'/>
+            </div>      
+            <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+              <video
+                src={`${path}/veterans_video.mp4`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  transform: 'scale(1.07)',
+                  transformOrigin: 'center center'
+                }}
+              />
+            </div>
+          </div>    
+        );
       } catch (error) {
         console.error("Error generating comic panels:", error);
       } finally {
@@ -33,35 +57,40 @@ export default function Veterans() {
       }
     }
 
-    loadPanels();
+    async function LoadVeterans(){      
+      try {
+        const data = await GetVeterans();
+        setContent(data? data : <></>);
+      } catch (error) {
+        console.error("Error generating comic panels:", error);
+      } finally {
+        setLoading(false);
+      }      
+    }
+
+    LoadVeterans();
   }, []);
 
   return (
     <div className="min-h-dvh flex flex-col bg-veterans-yellow">
-      <Header nav="| VAULT | GALLERY |" rightButton={{ label: 'Home', href: '/', ariaLabel: 'Back Home' }} />
+      <Header nav={[{ label: "VAULT", hoverEffect: false }, { label: "GALLERY", hoverEffect: true, href : "/veterans" }]} />
 
       {/* Main Content */}
       <main className="flex-1 max-w-full w-full px-4 sm:px-8 lg:px-16 py-8 overflow-auto">
         <div className="max-w-7xl mx-auto">
 
-          {/* Renderizar paneles generados */}
+          {/* Renderizar contenido */}
           {loading ? (
-            <div className="flex items-center justify-center min-h-96 bg-gray-100 border-2 border-dashed border-gray-400 rounded">
-              <p className="text-gray-600 text-lg">Cargando galería...</p>
+            <div className="flex items-center justify-center min-h-96">
+              <p className="text-gray-600 text-lg">Loading gallery...</p>
             </div>
-          ) : panels.length > 0 ? (
+          ) : content ? (
             <div className="space-y-16">
-              {panels.map((panel, index) => (
-                <div key={`panel-${index}`} className="relative">
-                  <GridPanel 
-                    config={panel}
-                  />
-                </div>
-              ))}
+              {content}
             </div>
           ) : (
             <div className="flex items-center justify-center min-h-96 bg-gray-100 border-2 border-dashed border-gray-400 rounded">
-              <p className="text-gray-600 text-lg">No hay paneles disponibles</p>
+              <p className="text-gray-600 text-lg">Not gallery available</p>
             </div>
           )}
         </div>

@@ -2,11 +2,10 @@
 
 
 @font-face {
-  font-family: 'Formula Condensed';
+  font-family: 'Formula Condensed Light';
   src: url('/FormulaCondensed-Light.otf') format('opentype');
-  font-weight: 300;
   font-style: normal;
-  font-display: swap;
+  font-display: swap;  
 }
 
 @font-face {
@@ -30,6 +29,7 @@
   --color-black-300: #2a2a2a;
   --color-black-700: #0a0a0a;
   --font-formula-condensed: 'Formula Condensed', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-formula-condensed-light: 'Formula Condensed Light', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -44,6 +44,11 @@ body,main,header,footer {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-formula-condensed);
+}
+
+p, span, a, li, button {
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 /* ============================================================
@@ -85,11 +90,27 @@ body,main,header,footer {
   .row { --row-height: var(--row-height-lg, 180px); }
 }
 
+.copyright-section {
+  display: inline-flex;
+  align-items: center; 
+  font-family: var(--font-formula-condensed-light); 
+}
+
+.copyright-section > img {
+  margin-right: 10px;
+
+}
+
+.copyright-section > * {
+  display: inline-flex;
+  align-items: center;  
+}
+
 /* ============================================================
    GRID PANEL
    ============================================================ */
 
-   /* Panel contenedor principal */
+  /* Panel contenedor principal */
 .page-panel {
   --panel-gap: 12px;
   --base-height: 180px;
@@ -103,14 +124,37 @@ body,main,header,footer {
   .row { --row-height: var(--row-height-sm, 140px); }
 }
 
+.page-panel-title-container {
+  vertical-align: middle; 
+  display: flex;
+  align-items: center;
+}
+
+.page-panel-title-container > div{
+  display: inline-flex;
+  align-items: center;  
+}
+
 .page-panel-title {
-  font-size: 2rem;
+  display: inline;
+  font-size: 1.5rem;
   line-height: normal;
-  font-weight: lighter;
   color: var(--foreground);
   margin-bottom: var(--panel-gap);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2px;  
+  font-family: var(--font-formula-condensed-light);
+}
+
+.page-panel-title-highlight {
+  opacity: 0.5;   
+}
+
+.page-panel-title-separator {
+  display: inline;
+  font-size: 2.2rem;
+  margin-right: 10px;
+  margin-left: 10px;  
 }
 
 .page-panel-label {
@@ -126,278 +170,4 @@ body,main,header,footer {
   text-transform: uppercase;
   letter-spacing: 1px;
   z-index: -1;
-}
-
-/* Grid base: 12 columnas, gap dinámico */
-.page-grid {
-  --grid-gap: 8px;
-  --base-height: 100px;
-  
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: var(--base-height);
-  gap: var(--grid-gap);
-  grid-auto-flow: dense;
-  
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-}
-
-/* ============================================================
-   CELDAS BASE
-   ============================================================ */
-
-.page-cell {
-  position: relative;
-  overflow: visible;
-  /* Permite que las deformaciones sobresalgan */
-}
-
-.page-cell-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  /* La capa inner ya no dibuja el borde, se usa para el fondo base */
-  background: transparent;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.page-cell-deform {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* Permite transformaciones sin romper el grid */
-  transform-origin: center;
-  transition: transform 0.3s ease-out;
-  overflow: visible;
-}
-
-/* Capa de contenido con clip-path irregular (bordes deformados) */
-.page-cell-content {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #fff;
-  border: 4px solid var(--foreground);
-  /* Sombra tipo cómic siguiendo el borde deformado */
-  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.3));
-  /* clip-path se aplica dinámicamente desde JS */
-}
-
-.page-cell-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  /* Permite que la imagen se extienda ligeramente */
-  transform: scale(1.02);
-}
-
-.page-cell-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  color: #999;
-  font-weight: bold;
-  text-align: center;
-  padding: 1rem;
-}
-
-.page-cell-title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-align: center;
-  color: #333;
-  word-break: break-word;
-}
-
-/* Label superpuesto en la esquina inferior izquierda */
-.page-cell-label {
-  position: absolute;
-  bottom: 6px;
-  left: 6px;
-  padding: 4px 8px;
-  background: rgba(251, 191, 49, 0.95);
-  border: 2px solid var(--foreground);
-  font-size: 0.65rem;
-  font-weight: bold;
-  color: var(--foreground);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  z-index: 10;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* ============================================================
-   VARIANTES DE CELDAS POR TIPO
-   ============================================================ */
-
-/* Small: 2x2, compacto */
-.page-cells-small {
-  --grid-cols: 2;
-  --grid-rows: 2;
-}
-
-.page-cell-small .page-cell-inner {
-  border-width: 2px;
-}
-
-/* Medium: 3x3, balanceado */
-.page-cells-medium {
-  --grid-cols: 3;
-  --grid-rows: 3;
-}
-
-.page-cell-medium .page-cell-inner {
-  border-width: 3px;
-}
-
-/* Wide: 4x2, horizontal */
-.page-cells-wide {
-  --grid-cols: 4;
-  --grid-rows: 2;
-}
-
-.page-cell-wide .page-cell-inner {
-  border-width: 3px;
-}
-
-/* Tall: 2x4, vertical */
-.page-cells-tall {
-  --grid-cols: 2;
-  --grid-rows: 4;
-}
-
-.page-cell-tall .page-cell-inner {
-  border-width: 3px;
-}
-
-/* Hero: 6x3, destacado */
-.page-cells-hero {
-  --grid-cols: 6;
-  --grid-rows: 3;
-}
-
-.page-cell-hero .page-cell-inner {
-  border-width: 4px;
-  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* ============================================================
-   SUPERPOSICIONES Y EFECTOS DE PROFUNDIDAD
-   ============================================================ */
-
-/* Permite que celdas se superpongan ligeramente */
-.page-cell {
-  z-index: auto;
-}
-
-.page-cell-hero {
-  z-index: 20;
-}
-
-.page-cell-wide {
-  z-index: 15;
-}
-
-.page-cell-tall {
-  z-index: 10;
-}
-
-.page-cell-medium {
-  z-index: 5;
-}
-
-.page-cell-small {
-  z-index: 1;
-}
-
-/* Hover effects deshabilitados (sin interactividad visual en celdas) */
-.page-cell-inner:hover {
-  box-shadow: none;
-  transform: none;
-}
-
-.page-cell-deform:hover {
-  transform: none;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 1024px) {
-  .page-grid {
-    grid-template-columns: repeat(8, 1fr);
-    --base-height: 140px;
-  }
-
-}
-
-@media (max-width: 768px) {
-  .page-grid {
-    grid-template-columns: repeat(6, 1fr);
-    --base-height: 120px;
-    gap: 8px;
-  }
-
-  .page-panel {
-    gap: 8px;
-    padding: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-grid {
-    grid-template-columns: repeat(4, 1fr);
-    --base-height: 100px;
-    gap: 6px;
-  }
-
-  .page-panel {
-    gap: 6px;
-    padding: 6px;
-  }
-
-  .page-cell-label {
-    font-size: 0.55rem;
-    padding: 3px 6px;
-  }
-}
-
-/* ============================================================
-   ANIMACIONES
-   ============================================================ */
-
-@keyframes slideInGrid {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.page-cell {
-  animation: slideInGrid 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page-cell,
-  .page-cell-inner,
-  .page-cell-inner:hover {
-    animation: none;
-    transition: none;
-  }
 }

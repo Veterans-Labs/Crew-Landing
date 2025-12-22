@@ -21,13 +21,12 @@ export default async function Home() {
     <div className="min-h-dvh flex flex-col">
       <Header nav={[{ label: "VAULT", hoverEffect: false }, { label: "GALLERY", hoverEffect: false, href : "/veterans" }]}/>
       <main className="flex-1 max-w-full w-full items-center justify-between align-middle lg:items-center sm:items-center xs:items-center overflow-hidden">
-        <video
+        <video className="video-home"
           src={'/pages/home/home_video.mp4'}
           autoPlay
           loop
           muted
-          playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          playsInline          
         />
       </main>
       <Footer />

@@ -55,9 +55,23 @@ body,main,header,footer {
   font-family: var(--font-formula-condensed);
 }
 
+header{
+  z-index: 1;
+}
+
 main {
   padding: 0px;
 }
+
+.video-home{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 
 p, span, a, li, button {
   letter-spacing: 2px;
@@ -212,7 +226,7 @@ p, span, a, li, button {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40%;
+  max-width: 390px;
   min-width: 320px;
   height: 100vh;
   background-image: url('/pages/manifiest--bg.png');
@@ -334,5 +348,8 @@ p, span, a, li, button {
     width: 100%;
     min-width: unset;
     background-size: cover;
+  }
+  .video-home{
+    object-fit: cover;
   }
 }

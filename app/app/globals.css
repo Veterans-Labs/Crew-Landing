@@ -16,9 +16,17 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Pixeled';
+  src: url('/Pixeled.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffbf0f;
-  --foreground: #171717;
+  --foreground: #171717;  
 }
 
 /* Theme tokens moved under :root for compatibility */
@@ -30,6 +38,7 @@
   --color-black-700: #0a0a0a;
   --font-formula-condensed: 'Formula Condensed', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-formula-condensed-light: 'Formula Condensed Light', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-pixeled: 'Pixeled', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -44,6 +53,10 @@ body,main,header,footer {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-formula-condensed);
+}
+
+main {
+  padding: 0px;
 }
 
 p, span, a, li, button {
@@ -170,4 +183,156 @@ p, span, a, li, button {
   text-transform: uppercase;
   letter-spacing: 1px;
   z-index: -1;
+}
+
+/* ============================================================
+   SIDE PANEL
+   ============================================================ */
+/* Overlay oscuro de fondo */
+.side-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.side-panel-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Panel lateral */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  min-width: 320px;
+  height: 100vh;
+  background-image: url('/pages/manifiest--bg.png');
+  background-size: contain;  
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-color: #fccd5a;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--color-black-700); 
+  font-family: var(--font-pixeled);
+}
+
+.side-panel.active {
+  transform: translateX(0);
+}
+
+/* Header del panel */
+.side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 1rem 0rem 1rem;
+  position: relative;
+}
+
+.side-panel-header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex: 1;
+  border-bottom: 1px solid var(--color-black-700); 
+
+}
+
+.side-panel-portrait {
+  display: inline-flex;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-black-700);
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.side-panel-title {
+  font-size: 1rem;
+  display: inline-flex;
+  line-height: 1.4;
+  margin: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;  
+  color: var(--foreground);  
+  max-width: 80%;
+}
+
+/* Botón de abrir y cerrar */
+.side-panel-open-btn, .side-panel-close-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #ffbf0f;
+  border: 1px solid #0a0a0a;
+  box-shadow: 4px 4px 0 0 #0a0a0a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.side-panel-open-btn:hover, .side-panel-close-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 0 #0a0a0a;
+}
+
+.side-panel-open-btn:active, .side-panel-close-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 0 #0a0a0a;
+}
+
+/* Contenido del panel */
+.side-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.8rem 1rem 1rem 1rem;
+  font-size: 0.45rem;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;    
+}
+
+.side-panel-content p {
+  margin-bottom: 1rem;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.side-panel-welcome {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.side-panel-footer-image {
+  width: 100%;
+  margin-top: 2rem;  
+  padding-top: 1rem;
+
+}
+
+/* Responsive: en pantallas pequeñas ocupa el 100% */
+@media (max-width: 768px) {
+  .side-panel {
+    width: 100%;
+    min-width: unset;
+    background-size: cover;
+  }
 }

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "manifiests",
+  "info": {
+    "singularName": "manifiest",
+    "pluralName": "manifiests",
+    "displayName": "Manifiest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Content": {
+      "type": "blocks",
+      "required": true
+    },
+    "Profile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "Background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

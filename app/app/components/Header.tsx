@@ -69,7 +69,7 @@ export function Header({ nav }: IHeaderProps) {
       <div className="side-panel-header">
         <div className="side-panel-header-left">
           <img 
-            src="/pages/soldier-profile.png" 
+            src="/pages/home/soldier-profile.png" 
             alt="Soldier" 
             className="side-panel-portrait"
           />

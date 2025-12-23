@@ -229,7 +229,7 @@ p, span, a, li, button {
   max-width: 390px;
   min-width: 320px;
   height: 100vh;
-  background-image: url('/pages/manifiest--bg.png');
+  background-image: url('/pages/home/manifiest-bg.png');
   background-size: contain;  
   background-repeat: no-repeat;
   background-position: bottom center;

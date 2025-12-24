@@ -19,7 +19,7 @@
     },
     "Video": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
         "files",
         "videos"

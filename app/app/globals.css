@@ -42,17 +42,13 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body,main,header,footer {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-formula-condensed);
+  scrollbar-color: var(--foreground) var(--background);
+  scrollbar-width: none;
+
 }
 
 header{
@@ -228,9 +224,8 @@ p, span, a, li, button {
   right: 0;
   max-width: 390px;
   min-width: 320px;
-  height: 100vh;
-  background-image: url('/pages/home/manifiest-bg.png');
-  background-size: contain;  
+  height: 100vh; 
+  background-size: cover;  
   background-repeat: no-repeat;
   background-position: bottom center;
   background-color: #fccd5a;
@@ -241,7 +236,10 @@ p, span, a, li, button {
   flex-direction: column;
   border: 2px solid var(--color-black-700); 
   font-family: var(--font-pixeled);
+  scrollbar-color: var(--foreground) var(--background);
+  scrollbar-width: none;
 }
+
 
 .side-panel.active {
   transform: translateX(0);
@@ -352,4 +350,21 @@ p, span, a, li, button {
   .video-home{
     object-fit: cover;
   }
+}
+
+/* Scroll in Manifest */
+@media (max-height: 886px) {
+  .side-panel-content {
+    max-height: calc(100vh - 45%);
+  }  
+}
+@media (max-height: 658px) {
+  .side-panel-content {
+    max-height: calc(100vh - 65%);
+  }  
+}
+@media (max-height: 450px) {
+  .side-panel-content {
+    max-height: calc(100vh - 85%);
+  }  
 }

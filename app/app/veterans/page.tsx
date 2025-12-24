@@ -2,21 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
 import { JSX } from 'react/jsx-runtime';
-
-import '../globals.css';
-
-/**
- * Página Veterans - Galería de Veteranos con Layout Editorial Cómico
- * 
- * Implementa un sistema CSS Grid dinámico y escalable con:
- * - Celdas de múltiples tamaños (small, medium, wide, tall, hero)
- * - Deformaciones visuales controladas
- * - Superposiciones de contenido
- * - Responsive desde mobile hasta desktop
- */
 
 export default function Veterans() {
   const [content, setContent] = useState<JSX.Element>(<></>);
@@ -72,31 +58,24 @@ export default function Veterans() {
   }, []);
 
   return (
-    <div className="min-h-dvh flex flex-col bg-veterans-yellow">
-      <Header nav={[{ label: "VAULT", hoverEffect: false }, { label: "GALLERY", hoverEffect: true, href : "/veterans" }]} />
+    <div className="flex-1 max-w-full w-full px-4 sm:px-8 lg:px-16 py-8 overflow-auto">
+      <div className="max-w-7xl mx-auto">
 
-      {/* Main Content */}
-      <main className="flex-1 max-w-full w-full px-4 sm:px-8 lg:px-16 py-8 overflow-auto">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Renderizar contenido */}
-          {loading ? (
-            <div className="flex items-center justify-center min-h-96">
-              <p className="text-gray-600 text-lg">Loading gallery...</p>
-            </div>
-          ) : content ? (
-            <div className="space-y-16">
-              {content}
-            </div>
-          ) : (
-            <div className="flex items-center justify-center min-h-96 bg-gray-100 border-2 border-dashed border-gray-400 rounded">
-              <p className="text-gray-600 text-lg">Not gallery available</p>
-            </div>
-          )}
-        </div>
-      </main>
-
-      <Footer />
+        {/* Renderizar contenido */}
+        {loading ? (
+          <div className="flex items-center justify-center min-h-96">
+            <p className="text-gray-600 text-lg">Loading gallery...</p>
+          </div>
+        ) : content ? (
+          <div className="space-y-16">
+            {content}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center min-h-96 bg-gray-100 border-2 border-dashed border-gray-400 rounded">
+            <p className="text-gray-600 text-lg">Not gallery available</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

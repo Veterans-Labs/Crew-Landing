@@ -6,7 +6,7 @@ import { useState } from "react";
 import "../globals.css";
 import { IHeaderProps } from "../interfaces/interfaces";
 
-export function Header({ nav }: IHeaderProps) {
+export function Header({ nav, manifiest }: IHeaderProps) {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const togglePanel = () => {
@@ -36,6 +36,7 @@ export function Header({ nav }: IHeaderProps) {
           </div>
         ))
       }</div>
+      {nav && (
       <div className="max-w-fit">
         <button 
           onClick={togglePanel} 
@@ -56,6 +57,7 @@ export function Header({ nav }: IHeaderProps) {
           </svg>
         </button>
       </div>
+      )}
     </header>
 
     {/* Overlay */}
@@ -65,11 +67,12 @@ export function Header({ nav }: IHeaderProps) {
     ></div>
 
     {/* Panel lateral */}
-    <div className={`side-panel ${isPanelOpen ? 'active' : ''}`}>
+    {manifiest && (
+    <div className={`side-panel ${isPanelOpen ? 'active' : ''}`} style={{backgroundImage: `url(${manifiest.backgroundUrl})`}}>
       <div className="side-panel-header">
         <div className="side-panel-header-left">
           <img 
-            src="/pages/home/soldier-profile.png" 
+            src={manifiest.profileUrl} 
             alt="Soldier" 
             className="side-panel-portrait"
           />
@@ -95,29 +98,10 @@ export function Header({ nav }: IHeaderProps) {
           </svg>
         </button>
       </div>
-      <div className="side-panel-content">
-        <p className="side-panel-welcome">Welcome home, brother.</p>
-
-        <p>You've arrived at our base after navigating a minefield. Receive a big hug, soldier. You are a survivor, a hero without decorations.</p>
-
-        <p>You've been through many battles that your mind remembers and that weigh on your conscience. What you've endured has made you stronger. If the toughest crypto and NFT winter hasn't stopped you, it's because you are forged with what it takes to achieve glory.</p>
-
-        <p>That's why we want you in our ranks. That's why we will fight this battle together.</p>
-
-        <p>It's not a time for crybabies but for those who accept ownership of their destiny. You are a warrior, and we want you by our side for this great battle. We will advance, shoulder to shoulder, for together, nothing is impossible.</p>
-
-        <p>You've experienced defeats and, possibly, distant victories. That journey has battered your body and mind, but nothing has stopped you. You are a Veteran in deeds. But, for now, without medals. This is the moment to claim what is rightfully yours.</p>
-
-        <p>We know you have the necessary will. You are strong, but together we will be invincible, advancing for our glory, for our honors. This victory will be ours.</p>
-
-        <p>We will march steadily, and our ranks and banners will make noise and be seen by all villages and communities. Our Veterans' seal will be known and prestigious in all regions of the world where the SOL shines.</p>
-
-        <p>We aim to forge a strong and resilient community, and we are delighted that you are a survivor who has knoked the doors of our base. We know that the Veterans seal calls to you and belongs to you. You are worthy to wear it on your chest. Here is your uniform, your boots, and your weapons. Put them on, and together we will march towards a glory that will be engraved in history.</p>
-
-        <p>Once again, it is said:</p>
-        <p>Welcome home, brother!</p>
+      <div className="side-panel-content" dangerouslySetInnerHTML={{ __html: manifiest.content }}>
       </div>
     </div>
+    )}
     </>
   );
 }

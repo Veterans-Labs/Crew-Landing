@@ -35,6 +35,9 @@
     "Path": {
       "type": "text",
       "required": true
+    },
+    "Order": {
+      "type": "integer"
     }
   }
 }

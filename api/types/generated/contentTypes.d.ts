@@ -484,7 +484,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Video: Schema.Attribute.Media<'files' | 'videos', true>;
+    Video: Schema.Attribute.Media<'files' | 'videos'>;
   };
 }
 
@@ -510,6 +510,7 @@ export interface ApiSocialSocial extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
+    Order: Schema.Attribute.Integer;
     Path: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

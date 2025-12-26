@@ -15,9 +15,9 @@ export function ConditionalLayout({ children, manifiest, social }: IConditionalL
 
     return (
         <AppProvider value={{ manifiest, social }}>
-        <div className="min-h-dvh flex flex-col">
+        <div className="flex flex-col">
             <Header {...headerConfig} />
-            <main className="flex-1 max-w-full w-full">
+            <main className="max-w-full w-full">
             {children}
             </main>
             <Footer social={social} />

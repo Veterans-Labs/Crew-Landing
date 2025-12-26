@@ -27,6 +27,7 @@
 :root {
   --background: #ffbf0f;
   --foreground: #171717;  
+  --radius-veterans: 8px !important;
 }
 
 /* Theme tokens moved under :root for compatibility */
@@ -35,7 +36,7 @@
   --color-foreground: var(--foreground);
   --color-black-200: #3a3a3a;
   --color-black-300: #2a2a2a;
-  --color-black-700: #0a0a0a;
+  --color-black-700: var(--foreground);
   --font-formula-condensed: 'Formula Condensed', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-formula-condensed-light: 'Formula Condensed Light', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-pixeled: 'Pixeled', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -60,12 +61,9 @@ main {
 }
 
 .video-home{
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100vh;
+  width: auto;
+  margin: 0 auto;
 }
 
 
@@ -135,16 +133,12 @@ p, span, a, li, button {
 
   /* Panel contenedor principal */
 .page-panel {
-  --panel-gap: 12px;
   --base-height: 180px;
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--panel-gap);
-  padding: var(--panel-gap);
   background: var(--background);
-  .row { --row-height: var(--row-height-sm, 140px); }
 }
 
 .page-panel-title-container {
@@ -292,22 +286,25 @@ p, span, a, li, button {
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: var(--radius-veterans);
   background: #ffbf0f;
-  border: 1px solid #0a0a0a;
-  box-shadow: 4px 4px 0 0 #0a0a0a;
+  border: 1px solid var(--foreground);
+  box-shadow: 3px 3px 0 0 var(--foreground);
   cursor: pointer;
   transition: all 0.2s ease;
+
 }
 
 .side-panel-open-btn:hover, .side-panel-close-btn:hover {
   transform: translate(1px, 1px);
-  box-shadow: 3px 3px 0 0 #0a0a0a;
+  box-shadow: 3px 3px 0 0 var(--foreground);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-veterans);
 }
 
 .side-panel-open-btn:active, .side-panel-close-btn:active {
   transform: translate(4px, 4px);
-  box-shadow: 0 0 0 0 #0a0a0a;
+  box-shadow: 0 0 0 0 var(--foreground);
 }
 
 /* Contenido del panel */
@@ -337,7 +334,17 @@ p, span, a, li, button {
   width: 100%;
   margin-top: 2rem;  
   padding-top: 1rem;
+}
 
+.footer-social-btn {
+  background: var(--background);
+  border-radius: var(--radius-veterans);
+}
+
+.footer-social-btn span {
+  box-shadow: 3px 3px 0 0 var(--foreground);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-veterans);
 }
 
 /* Responsive: en pantallas pequeñas ocupa el 100% */
@@ -346,9 +353,6 @@ p, span, a, li, button {
     width: 100%;
     min-width: unset;
     background-size: cover;
-  }
-  .video-home{
-    object-fit: cover;
   }
 }
 

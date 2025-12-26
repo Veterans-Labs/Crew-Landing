@@ -14,7 +14,7 @@ export default function Veterans() {
       try {
         return (
           <div className="page-panel">
-            <div className="page-panel-title text-center">
+            <div className="page-panel-title text-center lg:px-16 py-8 ">
               THIS IS
               <img src={`${path}/veterans_title.png`} alt='Veterans' width={350} height={71} className='mx-auto mt-2'/>
             </div>      
@@ -29,7 +29,8 @@ export default function Veterans() {
                   width: '100%', 
                   height: '100%', 
                   objectFit: 'cover', 
-                  transform: 'scale(1.07)',
+                  marginTop: '34px',
+                  transform: 'scale(1.108)',
                   transformOrigin: 'center center'
                 }}
               />
@@ -58,7 +59,7 @@ export default function Veterans() {
   }, []);
 
   return (
-    <div className="flex-1 max-w-full w-full px-4 sm:px-8 lg:px-16 py-8 overflow-auto">
+    <div className="max-w-full w-full px-4 sm:px-8 overflow-auto">
       <div className="max-w-7xl mx-auto">
 
         {/* Renderizar contenido */}
@@ -67,7 +68,7 @@ export default function Veterans() {
             <p className="text-gray-600 text-lg">Loading gallery...</p>
           </div>
         ) : content ? (
-          <div className="space-y-16">
+          <div>
             {content}
           </div>
         ) : (

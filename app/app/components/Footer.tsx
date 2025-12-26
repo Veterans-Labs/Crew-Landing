@@ -6,12 +6,11 @@ import { ISocial } from "../interfaces/interfaces";
 
 export function Footer({ social }: { social: ISocial[] }) {
   return (
-    <footer className="relative -bottom-5 max-w-full py-6 px-2 w-full flex flex-row items-center justify-center dark:bg-black border-t-4 dark:border-black-700">
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center gap-4">
-       
+    <footer className="relative max-w-full px-2 w-full flex flex-row items-center justify-center dark:var(--background) border-t-4 dark:border-black-700 mt-0">
+      <div className="absolute -top-5 left-1/2 -translate-x-1/2 flex items-center gap-2">       
         {social.map((item, idx) => (
-          <a key={idx} href={item.url} target="_blank" aria-label={item.name} className="group relative inline-flex" style={{background: "var(--background)", borderRadius: '13px'}} rel="noopener noreferrer">
-            <span className="relative flex items-center justify-center w-14 h-14 rounded-xl bg-veterans-yellow border-2 border-black shadow-[6px_6px_0_0_#0a0a0a]">
+          <a key={idx} href={item.url} target="_blank" aria-label={item.name} className="group relative inline-flex footer-social-btn">
+            <span className="relative flex items-center justify-center w-8 h-8 rounded-xs bg-veterans-yellow border-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="items-center justify-center" viewBox={item.viewBox} height={item.height} width={item.width}>
                 {item.path.startsWith('M') ? (
                   <path d={item.path} fill="black" />

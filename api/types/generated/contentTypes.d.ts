@@ -441,8 +441,8 @@ export interface ApiManifiestManifiest extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Background: Schema.Attribute.Media<'images' | 'files'>;
-    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Background: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    Content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -452,7 +452,8 @@ export interface ApiManifiestManifiest extends Struct.CollectionTypeSchema {
       'api::manifiest.manifiest'
     > &
       Schema.Attribute.Private;
-    Profile: Schema.Attribute.Media<'images' | 'files'>;
+    Profile: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -471,8 +472,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Banner: Schema.Attribute.Media<'images' | 'files', true>;
-    Content: Schema.Attribute.Blocks;
+    Banner: Schema.Attribute.Media<'images' | 'files'>;
+    Content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -480,7 +481,9 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -502,27 +505,27 @@ export interface ApiSocialSocial extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Height: Schema.Attribute.Integer;
+    Height: Schema.Attribute.Integer & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::social.social'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
-    Order: Schema.Attribute.Integer;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     Path: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Url: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'https://'>;
-    ViewBox: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'0 0 0 0'>;
-    Width: Schema.Attribute.Integer;
+    Url: Schema.Attribute.String;
+    ViewBox: Schema.Attribute.String & Schema.Attribute.Required;
+    Width: Schema.Attribute.Integer & Schema.Attribute.Required;
   };
 }
 

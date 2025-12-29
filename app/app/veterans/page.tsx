@@ -3,24 +3,25 @@
 
 import { useEffect, useState } from 'react';
 import { JSX } from 'react/jsx-runtime';
+import { APIGetPage } from '../services/Strapi';
 
 export default function Veterans() {
   const [content, setContent] = useState<JSX.Element>(<></>);
   const [loading, setLoading] = useState(true);
-  const path = '/pages/veterans';
 
   useEffect(() => {
     async function GetVeterans() {
       try {
+        const veterans = await APIGetPage("Veterans");
         return (
           <div className="page-panel">
             <div className="page-panel-title text-center lg:px-16 py-8 ">
               THIS IS
-              <img src={`${path}/veterans_title.png`} alt='Veterans' width={350} height={71} className='mx-auto mt-2'/>
+              <img src={`${veterans.banner}`} alt='Veterans' width={350} height={71} className='mx-auto mt-2'/>
             </div>      
             <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
               <video
-                src={`${path}/veterans_video.mp4`}
+                src={`${veterans.video}`}
                 autoPlay
                 loop
                 muted

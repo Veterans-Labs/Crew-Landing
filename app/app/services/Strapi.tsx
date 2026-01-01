@@ -28,8 +28,8 @@ export async function APIGetManifiest() : Promise<IManifiest> {
     
     const manifiestResult : IManifiest = {
         content: contentTextMerge,
-        profileUrl: `${SERVER_URL}${manifiestData.data[0].Profile.url}`,
-        backgroundUrl: `${SERVER_URL}${manifiestData.data[0].Background.url}`,
+        profileUrl: `${manifiestData.data[0].Profile.url}`,
+        backgroundUrl: `${manifiestData.data[0].Background.url}`,
     };
 
 
@@ -54,7 +54,7 @@ export async function APIGetSocial() : Promise<ISocial[]> {
     socialData.data.forEach((item: { Name: string; Url: string; ViewBox: string; Width: number; Height: number; Path: string }) => {
         socialResult.push({
             name: item.Name,
-            url: `${SERVER_URL}${item.Url}`,
+            url: item.Url,
             viewBox: item.ViewBox,
             width: item.Width,
             height: item.Height,
@@ -86,8 +86,8 @@ export async function APIGetPage(name: string) : Promise<IPage> {
     
     pageData.data.forEach((item: { Title: string; Video: { url: string }; Banner: { url: string } }) => {
         pageResult.title = item.Title;
-        pageResult.video = `${SERVER_URL}${item.Video?.url}`;
-        pageResult.banner = `${SERVER_URL}${item.Banner?.url}`;
+        pageResult.video = `${item.Video?.url}`;
+        pageResult.banner = `${item.Banner?.url}`;
     });
 
     return pageResult;

@@ -12,12 +12,12 @@
   "pluginOptions": {},
   "attributes": {
     "Content": {
-      "type": "blocks",
-      "required": true
+      "type": "richtext"
     },
     "Profile": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
@@ -28,7 +28,8 @@
       "multiple": false,
       "allowedTypes": [
         "images",
-        "files"
+        "files",
+        "videos"
       ]
     }
   }

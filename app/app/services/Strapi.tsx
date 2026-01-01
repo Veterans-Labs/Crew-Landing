@@ -15,10 +15,16 @@ export async function APIGetManifiest() : Promise<IManifiest> {
     }
 
     const manifiestData = await res.json();
-    const contentArray = manifiestData.data[0].Content.map((item: IContentItem) => item.children.map((child: IContentChild) => child.text).join(''));
-    const contentTextMerge = contentArray.map((text: string, index: number) => 
-        index === 0 ? `<p className="side-panel-welcome">${text}</p>` : `<p>${text}</p>`
-    ).join('');
+    const contentRaw = manifiestData.data[0].Content as string;
+    const paragraphChunks = contentRaw
+        .split(/\n\n/)
+        .map((text: string) => text.trim())
+        .filter((text: string) => text.length > 0);
+    const contentTextMerge = paragraphChunks
+        .map((text: string, index: number) => index === 0
+            ? `<p className="side-panel-welcome">${text}</p>`
+            : `<p>${text}</p>`
+        ).join('');
     
     const manifiestResult : IManifiest = {
         content: contentTextMerge,
@@ -48,7 +54,7 @@ export async function APIGetSocial() : Promise<ISocial[]> {
     socialData.data.forEach((item: { Name: string; Url: string; ViewBox: string; Width: number; Height: number; Path: string }) => {
         socialResult.push({
             name: item.Name,
-            url: item.Url,
+            url: `${SERVER_URL}${item.Url}`,
             viewBox: item.ViewBox,
             width: item.Width,
             height: item.Height,

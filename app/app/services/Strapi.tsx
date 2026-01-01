@@ -15,21 +15,15 @@ export async function APIGetManifiest() : Promise<IManifiest> {
     }
 
     const manifiestData = await res.json();
-    const contentRaw = manifiestData.data[0].Content as string;
-    const paragraphChunks = contentRaw
-        .split(/\n\n/)
-        .map((text: string) => text.trim())
-        .filter((text: string) => text.length > 0);
-    const contentTextMerge = paragraphChunks
-        .map((text: string, index: number) => index === 0
-            ? `<p className="side-panel-welcome">${text}</p>`
-            : `<p>${text}</p>`
-        ).join('');
+    const contentArray = manifiestData.data[0].Content.map((item: IContentItem) => item.children.map((child: IContentChild) => child.text).join(''));
+    const contentTextMerge = contentArray.map((text: string, index: number) => 
+        index === 0 ? `<p className="side-panel-welcome">${text}</p>` : `<p>${text}</p>`
+    ).join('');
     
     const manifiestResult : IManifiest = {
         content: contentTextMerge,
-        profileUrl: `${manifiestData.data[0].Profile.url}`,
-        backgroundUrl: `${manifiestData.data[0].Background.url}`,
+        profileUrl: `${SERVER_URL}${manifiestData.data[0].Profile.url}`,
+        backgroundUrl: `${SERVER_URL}${manifiestData.data[0].Background.url}`,
     };
 
 
@@ -86,8 +80,8 @@ export async function APIGetPage(name: string) : Promise<IPage> {
     
     pageData.data.forEach((item: { Title: string; Video: { url: string }; Banner: { url: string } }) => {
         pageResult.title = item.Title;
-        pageResult.video = `${item.Video?.url}`;
-        pageResult.banner = `${item.Banner?.url}`;
+        pageResult.video = `${SERVER_URL}${item.Video?.url}`;
+        pageResult.banner = `${SERVER_URL}${item.Banner?.url}`;
     });
 
     return pageResult;

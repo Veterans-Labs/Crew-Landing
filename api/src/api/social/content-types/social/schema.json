@@ -12,35 +12,32 @@
   "pluginOptions": {},
   "attributes": {
     "Name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
     "Url": {
       "type": "string",
-      "regex": "^https?:\\/\\/[\\w\\-]+(\\.[\\w\\-]+)+[/#?]?.*$"
+      "default": "https://",
+      "required": true,
+      "regex": "^https?:\\/\\/\\w+(\\.\\w+)+(\\/[\\w\\.-]*)*\\/?$"
     },
     "ViewBox": {
       "type": "string",
+      "default": "0 0 0 0",
       "required": true,
-      "regex": "^\\d{1,8}(?:\\s\\d{1,8}){3}$"
+      "regex": "^\\d+\\s+\\d+\\s+\\d+\\s+\\d+$"
     },
     "Width": {
-      "type": "integer",
-      "required": true
+      "type": "integer"
     },
     "Height": {
-      "type": "integer",
-      "required": true
+      "type": "integer"
     },
     "Path": {
       "type": "text",
       "required": true
     },
     "Order": {
-      "type": "integer",
-      "required": true,
-      "unique": true
+      "type": "integer"
     }
   }
 }

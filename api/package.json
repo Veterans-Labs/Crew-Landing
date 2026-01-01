@@ -1,8 +1,8 @@
 {
-  "name": "veterans",
+  "name": "veterans-api",
   "version": "0.1.0",
   "private": true,
-  "description": "A Strapi application",
+  "description": "Veterans API",
   "scripts": {
     "build": "strapi build",
     "console": "strapi console",
@@ -18,11 +18,10 @@
     "@strapi/plugin-cloud": "5.33.0",
     "@strapi/plugin-users-permissions": "5.33.0",
     "@strapi/strapi": "5.33.0",
-    "pg": "8.8.0",
+    "better-sqlite3": "12.4.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "strapi-upload-supabase-provider": "^1.0.8",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
@@ -36,7 +35,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "551513ad-e616-48d5-a046-fd35b00647f8",
-    "installId": "b8526118bd5838889576f4dc0a596290a1381ffea3f52504bda63070b5311163"
+    "uuid": "e47393a5-6da0-4c68-b4f5-8365ef17a49a",
+    "installId": "c2789bbd6b23af9728e98ad87873318da39617eaa96475827d6b3e5578277e8f"
   }
 }

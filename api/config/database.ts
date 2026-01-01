@@ -23,12 +23,8 @@ export default ({ env }) => {
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
     postgres: {
-      connection: env('DATABASE_URL') ? {
+      connection: {
         connectionString: env('DATABASE_URL'),
-        ssl: {
-          rejectUnauthorized: false
-        }
-      } : {
         host: env('DATABASE_HOST', 'localhost'),
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'strapi'),
@@ -44,12 +40,7 @@ export default ({ env }) => {
         },
         schema: env('DATABASE_SCHEMA', 'public'),
       },
-      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10), acquireTimeoutMillis: 60000,
-            createTimeoutMillis: 30000,
-            destroyTimeoutMillis: 5000,
-            idleTimeoutMillis: 30000,
-            reapIntervalMillis: 1000 
-      },
+      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
     sqlite: {
       connection: {

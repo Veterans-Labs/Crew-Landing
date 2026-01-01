@@ -11,21 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
     "Content": {
-      "type": "richtext"
+      "type": "blocks"
     },
-    "Banner": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+    "Title": {
+      "type": "string"
     },
     "Video": {
       "type": "media",
@@ -33,6 +23,14 @@
       "allowedTypes": [
         "files",
         "videos"
+      ]
+    },
+    "Banner": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
       ]
     }
   }

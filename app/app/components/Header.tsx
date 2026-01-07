@@ -29,7 +29,7 @@ export function Header({ nav, manifiest }: IHeaderProps) {
         nav?.map((item, index) => (
           <div key={index}>            
             <div className="page-panel-title-separator">|</div>
-            <Link href={item.href || "#"} style={{cursor : item.href ? 'pointer' : 'default'}} className={`px-3 ${item.hoverEffect ? 'page-panel-title-highlight' : ''}`}>
+            <Link href={item.href || "#"} style={{cursor : item.href ? 'pointer' : 'default'}} target={item.target || "_self"} className={`px-3 ${item.hoverEffect ? 'page-panel-title-highlight' : ''}`}>
               {item.label}
             </Link>
             {index > 0 ? <div className="page-panel-title-separator">|</div> : ''}            

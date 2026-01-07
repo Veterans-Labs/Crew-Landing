@@ -3,6 +3,7 @@ export interface IHeaderProps {
     label: string;
     hoverEffect: boolean;
     href?: string;
+    target?: string;
   }[];
   manifiest?: IManifiest;
 }

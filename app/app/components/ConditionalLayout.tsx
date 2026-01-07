@@ -9,9 +9,7 @@ import { IConditionalLayoutProps } from '../interfaces/interfaces';
 export function ConditionalLayout({ children, manifiest, social }: IConditionalLayoutProps) {
     const pathname = usePathname();
 
-    const headerConfig = pathname === '/veterans' 
-        ? { nav: [{ label: "VAULT", hoverEffect: true, href: "/" }, { label: "GALLERY", hoverEffect: false }], manifiest }
-        : { nav: [{ label: "VAULT", hoverEffect: false }, { label: "GALLERY", hoverEffect: false, href: "/veterans" }], manifiest };
+    const headerConfig = { nav: [{ label: "CREW DEX", hoverEffect: false, href: "https://veteranscrew.trade/perp/PERP_SOL_USDC", target: "_blank" }, { label: "GALLERY", hoverEffect: pathname === '/veterans' ? true : false, href: "/veterans", target: "_self" }], manifiest };
 
     return (
         <AppProvider value={{ manifiest, social }}>

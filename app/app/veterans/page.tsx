@@ -15,8 +15,8 @@ export default function Veterans() {
         const veterans = await APIGetPage("Veterans");
         return (
           <div className="page-panel">
-            <div className="page-panel-title text-center lg:px-16 py-8 ">
-              THIS IS
+            <div className="text-center lg:px-16 py-8 ">
+              <div className="page-panel-title">THIS IS</div>
               <img src={`${veterans.banner}`} alt='Veterans' width={350} height={71} className='mx-auto mt-2'/>
             </div>      
             <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>

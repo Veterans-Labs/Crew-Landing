@@ -23,9 +23,9 @@ export function Footer({ social }: { social: ISocial[] }) {
         ))}
       </div>      
       <div className="w-full flex-row items-center justify-center text-center space-y-2 mt-8">
-        <div className="py-1 text-sm"><span>VAULT / GALLERY</span></div>
+        <div className="py-1 text-sm footer-text"><span>VAULT / GALLERY</span></div>
         <div className="py-1 text-sm copyright-section">
-          <img src="/veterans-logo.png" alt="Veterans Logo" width={20} height={20} />
+          <img src="/veterans-logo.png" alt="Veterans Logo" width={15} height={15} />
           © {new Date().getFullYear()} VETERANS. ALL RIGHTS RESERVED</div>
       </div>
     </footer>

@@ -73,7 +73,10 @@ body,main,header,footer {
   font-family: var(--font-formula-condensed);
   scrollbar-color: var(--foreground) var(--background);
   scrollbar-width: none;
+}
 
+footer{
+  padding-bottom: 30px;
 }
 
 header{
@@ -138,18 +141,24 @@ p, span, a, li, button {
   display: inline-flex;
   align-items: center; 
   font-family: var(--font-formula-condensed-light); 
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 8px;
+  letter-spacing: 0.7px;
+
 }
 
 .copyright-section > img {
-  margin-right: 10px;
+  margin-right: 5px;
 
 }
 
 .copyright-section > * {
   display: inline-flex;
   align-items: center;  
+}
+
+.footer-text{
+  width: 152px;
+  margin: 0 auto;
 }
 
 /* ============================================================

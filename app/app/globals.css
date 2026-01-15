@@ -45,14 +45,11 @@
   font-display: swap;
 }
 
+/* Theme tokens moved under :root for compatibility */
 :root {
   --background: #ffbf0f;
   --foreground: #171717;  
   --radius-veterans: 3px !important;
-}
-
-/* Theme tokens moved under :root for compatibility */
-:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-black-200: #3a3a3a;
@@ -159,6 +156,8 @@ p, span, a, li, button {
 .footer-text{
   width: 152px;
   margin: 0 auto;
+  --spacing: 0.20rem;
+
 }
 
 /* ============================================================
@@ -377,7 +376,7 @@ p, span, a, li, button {
 }
 
 .footer-social-btn span {
-  box-shadow: 2px 2px 0 0 var(--foreground);
+  box-shadow: 4px 4px 0 0 var(--foreground);
   outline: 1px solid var(--foreground);
   border-width: 0px;
   border-radius: var(--radius-veterans);

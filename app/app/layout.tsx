@@ -15,8 +15,12 @@ export default async function RootLayout({
   let errorMessage = "";
 
   try {
-    social = await APIGetSocial();
-    manifiest = await APIGetManifiest();
+    const responsePromises = await Promise.all([
+      APIGetSocial(),
+      APIGetManifiest()
+    ]);
+    social = responsePromises[0];
+    manifiest = responsePromises[1];
   } catch (error) {
     hasError = true;
     errorMessage = error instanceof Error 

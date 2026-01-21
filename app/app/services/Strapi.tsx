@@ -1,4 +1,4 @@
-import { SERVER_API_URL, SERVER_URL } from "../config";
+import { SERVER_API_URL, SERVER_URL } from "../../config";
 import { IContentChild, IContentItem, IManifiest, IPage, ISocial } from "../interfaces/interfaces";
 
 export async function APIGetManifiest() : Promise<IManifiest> {

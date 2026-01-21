@@ -84,7 +84,7 @@ const securityHeadersConfig = (phase: string) => {
             connect-src 'self';
             img-src 'self' data:;
             media-src 'self' data:;
-            frame-src 'none';
+            frame-src 'self';
         `
  
     }
@@ -109,6 +109,18 @@ const securityHeadersConfig = (phase: string) => {
         {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+        },
+        {
+            key: 'Strict-Transport-Security',
+            value: phase !== PHASE_DEVELOPMENT_SERVER ? 'max-age=63072000; includeSubDomains; preload' : 'max-age=0',
+        },
+        {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+        },
+        {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
         },
     ]
  

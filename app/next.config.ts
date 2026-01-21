@@ -57,7 +57,7 @@ const securityHeadersConfig = (phase: string) => {
                 connect-src 'self' https://vitals.vercel-insights.com https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
                 img-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
                 media-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                frame-src 'none' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
+                frame-src 'self' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
             `
         }
  

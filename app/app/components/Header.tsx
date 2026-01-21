@@ -37,7 +37,7 @@ export function Header({ nav, manifiest }: IHeaderProps) {
         ))
       }</div>
       {nav && (
-      <div className="max-w-fit">
+      <div className="max-w-fit side-panel-parent">
         <button 
           onClick={togglePanel} 
           className="side-panel-open-btn"

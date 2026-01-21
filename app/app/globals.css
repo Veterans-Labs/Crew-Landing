@@ -313,13 +313,22 @@ p, span, a, li, button {
 }
 
 /* Botón de abrir y cerrar */
+.side-panel-open-btn {
+  width: 39px;
+  height: 39px;
+}
+
+.side-panel-close-btn {
+  width: 28px;
+  height: 28px;
+}
+
+
 .side-panel-open-btn, .side-panel-close-btn {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
   border-radius: var(--radius-veterans);
   background: #ffbf0f;
   border: 1px solid var(--foreground);
@@ -342,6 +351,10 @@ p, span, a, li, button {
 }
 
 /* Contenido del panel */
+.side-panel-parent{
+  padding: 0rem 0.6rem 0.3rem;
+}
+
 .side-panel-content {
   flex: 1;
   overflow-y: auto;

@@ -51,13 +51,13 @@ const securityHeadersConfig = (phase: string) => {
         if (process.env.NEXT_PUBLIC_SERVER_ENVIRONMENT === 'PRODUCTION') {
             return `
                 ${defaultCSPDirectives}
-                font-src 'self' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                style-src 'self' 'unsafe-inline' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                script-src 'self' 'unsafe-inline' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                connect-src 'self' https://vitals.vercel-insights.com https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                img-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                media-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
-                frame-src 'self' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-production.up.railway.app/;
+                font-src 'self' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                style-src 'self' 'unsafe-inline' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                script-src 'self' 'unsafe-inline' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                connect-src 'self' https://vitals.vercel-insights.com https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                img-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                media-src 'self' data: https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
+                frame-src 'self' https://veterans-kohl.vercel.app/ https://veteranscrew.xyz/ https://crew-landing-pro-production.up.railway.app/;
             `
         }
  

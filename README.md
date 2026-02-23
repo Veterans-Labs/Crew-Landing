@@ -2,7 +2,7 @@
 ### 1. App and API
 Deploy with Strapi serverless + storage + supabase (BBDD)
 
-Veterans beta v1.0.2
+Veterans v1.0.3
 
 ### Last changes
 19/01/2026
@@ -11,3 +11,5 @@ Update icon App with new design Veterans Crew.
 Deploy CMS Strapi in Railway with load path media url from server
 21/01/2026
 Apply Content Security Policy.
+23/02/2026
+Re-deploy CMS Strapi in Railway in account from Veterans Crew.
